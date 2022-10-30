@@ -1,5 +1,7 @@
 package com.example.saa2.Entity;
 
+import com.example.saa2.Entity.Interfaces.ItemType;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -7,47 +9,21 @@ import java.util.List;
 public class Section
 {
     @Id@GeneratedValue(strategy = GenerationType.AUTO)
-    private int section_id;
+    private int id;
 
     @ManyToOne
-    private Test test;
+    private TestResponse testResponse;
 
+    @Transient
+    private List<ItemType> itemTypes;
 
-    @OneToMany(mappedBy = "section")
-    private List<Item> items;
-
-    public Section()
+    public void addItem(ItemType itemType)
     {
-
+        this.itemTypes.add(itemType);
     }
 
-    public Section(int section_id, Test test, List<Item> items) {
-        this.section_id = section_id;
-        this.test = test;
-        this.items = items;
-    }
-
-    public int getSection_id() {
-        return section_id;
-    }
-
-    public void setSection_id(int section_id) {
-        this.section_id = section_id;
-    }
-
-    public Test getTest() {
-        return test;
-    }
-
-    public void setTest(Test test) {
-        this.test = test;
-    }
-
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public List<ItemType> getItems()
+    {
+        return this.itemTypes;
     }
 }

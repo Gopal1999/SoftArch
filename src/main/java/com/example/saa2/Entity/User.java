@@ -1,6 +1,7 @@
 package com.example.saa2.Entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User
@@ -27,16 +28,13 @@ public class User
     private boolean loginstatus;
 
     @OneToOne(mappedBy = "user")
-    private Test test;
-
-    @OneToOne(mappedBy = "user")
     private TestResponse testResponse;
 
     public User(){
 
     }
 
-    public User(int user_id, String username, String email, String password, String fname, String lname, boolean loginstatus) {
+    public User(int user_id, String username, String email, String password, String fname, String lname, boolean loginstatus, TestResponse testResponse) {
         this.user_id = user_id;
         this.username = username;
         this.email = email;
@@ -44,6 +42,7 @@ public class User
         Fname = fname;
         Lname = lname;
         this.loginstatus = loginstatus;
+        this.testResponse = testResponse;
     }
 
     public int getUser_id() {
@@ -83,7 +82,7 @@ public class User
     }
 
     public void setFname(String fname) {
-        Fname = fname.toUpperCase();
+        Fname = fname;
     }
 
     public String getLname() {
@@ -91,7 +90,7 @@ public class User
     }
 
     public void setLname(String lname) {
-        Lname = lname.toUpperCase();
+        Lname = lname;
     }
 
     public boolean isLoginstatus() {
@@ -100,5 +99,13 @@ public class User
 
     public void setLoginstatus(boolean loginstatus) {
         this.loginstatus = loginstatus;
+    }
+
+    public TestResponse getTestResponse() {
+        return testResponse;
+    }
+
+    public void setTestResponse(TestResponse testResponse) {
+        this.testResponse = testResponse;
     }
 }

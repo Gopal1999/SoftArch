@@ -7,46 +7,34 @@ import java.util.List;
 public class Test
 {
     @Id@GeneratedValue(strategy = GenerationType.AUTO)
-    private int test_id;
-
-    @OneToOne
-    private User user;
+    private int id;
 
     @OneToMany(mappedBy = "test")
-    private List<Section> sections;
+    private List<TestResponse> testResponseList;
 
     public Test()
     {
 
     }
 
-    public Test(int test_id, User user, List<Section> sections) {
-        this.test_id = test_id;
-        this.user = user;
-        this.sections = sections;
+    public Test(int id, List<TestResponse> testResponseList) {
+        this.id = id;
+        this.testResponseList = testResponseList;
     }
 
-    public int getTest_id() {
-        return test_id;
+    public int getId() {
+        return id;
     }
 
-    public void setTest_id(int test_id) {
-        this.test_id = test_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public List<TestResponse> getTestResponseList() {
+        return testResponseList;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<Section> getSections() {
-        return sections;
-    }
-
-    public void setSections(List<Section> sections) {
-        this.sections = sections;
+    public void setTestResponseList(List<TestResponse> testResponseList) {
+        this.testResponseList = testResponseList;
     }
 }

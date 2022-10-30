@@ -7,43 +7,36 @@ import java.util.List;
 public class TestResponse
 {
     @Id@GeneratedValue(strategy = GenerationType.AUTO)
-    private int testResponse_id;
+    private int id;
 
     @OneToOne
     private User user;
 
-    @OneToOne
+    @OneToMany(mappedBy = "testResponse")
+    private List<Section> sections;
+
+    @ManyToOne
     private Test test;
 
-    @Column
-    private int status;
-
-    @Column
-    private boolean submissionstatus;
-
-    @OneToMany(mappedBy = "testResponse")
-    private List<ItemResponse> itemResponses;
 
     public TestResponse()
     {
 
     }
 
-    public TestResponse(int testResponse_id, User user, Test test, int status, boolean submissionstatus, List<ItemResponse> itemResponses) {
-        this.testResponse_id = testResponse_id;
+    public TestResponse(int id, User user, List<Section> sections) {
+        this.id = id;
         this.user = user;
-        this.test = test;
-        this.status = status;
-        this.submissionstatus = submissionstatus;
-        this.itemResponses = itemResponses;
+        this.sections = sections;
     }
 
-    public int getTestResponse_id() {
-        return testResponse_id;
+
+    public int getId() {
+        return id;
     }
 
-    public void setTestResponse_id(int testResponse_id) {
-        this.testResponse_id = testResponse_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public User getUser() {
@@ -54,35 +47,19 @@ public class TestResponse
         this.user = user;
     }
 
+    public List<Section> getSections() {
+        return sections;
+    }
+
+    public void setSections(List<Section> sections) {
+        this.sections = sections;
+    }
+
     public Test getTest() {
         return test;
     }
 
     public void setTest(Test test) {
         this.test = test;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public boolean isSubmissionstatus() {
-        return submissionstatus;
-    }
-
-    public void setSubmissionstatus(boolean submissionstatus) {
-        this.submissionstatus = submissionstatus;
-    }
-
-    public List<ItemResponse> getItemResponses() {
-        return itemResponses;
-    }
-
-    public void setItemResponses(List<ItemResponse> itemResponses) {
-        this.itemResponses = itemResponses;
     }
 }

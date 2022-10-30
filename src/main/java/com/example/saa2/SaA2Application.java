@@ -1,6 +1,5 @@
 package com.example.saa2;
 
-import com.example.saa2.Entity.ItemResponse;
 import com.example.saa2.Repository.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
