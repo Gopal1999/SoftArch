@@ -1,9 +1,9 @@
 package com.example.saa2.Repository;
 
-import com.example.saa2.Entity.Test;
+import com.example.saa2.Entity.NAT;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface TestRepo extends JpaRepository<Test, Integer>
+public interface NATRepo extends JpaRepository<NAT,Integer>
 {
 
 }

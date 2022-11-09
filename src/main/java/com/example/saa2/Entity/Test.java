@@ -1,29 +1,49 @@
 package com.example.saa2.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Test
-{
-    @Id@GeneratedValue(strategy = GenerationType.AUTO)
+public class Test {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int test_id;
 
-    @OneToOne
-    private User user;
+    @OneToMany(mappedBy = "test")
+    @JsonIgnore
+    List<TestResponse> testResponses = new ArrayList<TestResponse>();
 
     @OneToMany(mappedBy = "test")
-    private List<Section> sections;
+    private List<Question> questions = new ArrayList<Question>();
 
     public Test()
     {
 
     }
 
-    public Test(int test_id, User user, List<Section> sections) {
+    public Test(int test_id, List<TestResponse> testResponses, List<Question> questions) {
         this.test_id = test_id;
-        this.user = user;
-        this.sections = sections;
+        this.testResponses = testResponses;
+        this.questions = questions;
+    }
+
+    public List<TestResponse> getTestResponses() {
+        return testResponses;
+    }
+
+    public void setTestResponses(List<TestResponse> testResponses) {
+        this.testResponses = testResponses;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
     }
 
     public int getTest_id() {
@@ -34,19 +54,18 @@ public class Test
         this.test_id = test_id;
     }
 
-    public User getUser() {
-        return user;
+//    public List<TestResponse> getItems() {
+//        return items;
+//    }
+//
+//    public void setItems(List<TestResponse> items) {
+//        this.items = items;
+//    }
+
+    public void addQuestion(Question question)
+    {
+        questions.add(question);
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
 
-    public List<Section> getSections() {
-        return sections;
-    }
-
-    public void setSections(List<Section> sections) {
-        this.sections = sections;
-    }
 }

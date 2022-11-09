@@ -1,5 +1,8 @@
 package com.example.saa2.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,36 +17,37 @@ public class User
     @Column
     private String email;
 
-    @Column(nullable = false)
-    private String password;
-
-    @Column(nullable = false)
-    private String Fname;
-
-    @Column(nullable = false)
-    private String Lname;
 
     @Column
-    private boolean loginstatus;
+    private String password;
+
+    @Column
+    private String Fname;
+
+    @Column
+    private String Lname;
+
+
+
+//    @OneToOne(mappedBy = "user")
+//    private Test test;
 
     @OneToOne(mappedBy = "user")
-    private Test test;
-
-    @OneToOne(mappedBy = "user")
+    @JsonIgnore
     private TestResponse testResponse;
 
     public User(){
 
     }
 
-    public User(int user_id, String username, String email, String password, String fname, String lname, boolean loginstatus) {
+    public User(int user_id, String username, String email, String password, String fname, String lname, TestResponse testResponse) {
         this.user_id = user_id;
         this.username = username;
         this.email = email;
         this.password = password;
-        Fname = fname;
-        Lname = lname;
-        this.loginstatus = loginstatus;
+        this.Fname = fname;
+        this.Lname = lname;
+        this.testResponse = testResponse;
     }
 
     public int getUser_id() {
@@ -83,7 +87,7 @@ public class User
     }
 
     public void setFname(String fname) {
-        Fname = fname.toUpperCase();
+        Fname = fname;
     }
 
     public String getLname() {
@@ -91,14 +95,36 @@ public class User
     }
 
     public void setLname(String lname) {
-        Lname = lname.toUpperCase();
+        Lname = lname;
+    }
+//
+//    public boolean getLoginstatus() {
+//        return loginstatus;
+//    }
+//
+//    public void setLoginstatus(boolean loginstatus) {
+//        this.loginstatus = loginstatus;
+//    }
+//
+    public TestResponse getTestResponse() {
+        return testResponse;
     }
 
-    public boolean isLoginstatus() {
-        return loginstatus;
+    public void setTestResponse(TestResponse testResponse) {
+        this.testResponse = testResponse;
     }
 
-    public void setLoginstatus(boolean loginstatus) {
-        this.loginstatus = loginstatus;
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_id=" + user_id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", Fname='" + Fname + '\'' +
+                ", Lname='" + Lname + '\'' +
+//                ", loginstatus=" + loginstatus +
+                ", testResponse=" + testResponse +
+                '}';
     }
 }

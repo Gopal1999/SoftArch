@@ -1,6 +1,9 @@
 package com.example.saa2.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -9,33 +12,27 @@ public class TestResponse
     @Id@GeneratedValue(strategy = GenerationType.AUTO)
     private int testResponse_id;
 
-    @OneToOne
-    private User user;
 
-    @OneToOne
+    @ManyToOne@JsonIgnore
     private Test test;
 
-    @Column
-    private int status;
-
-    @Column
-    private boolean submissionstatus;
+    @OneToOne@JsonIgnore
+    private User user;
 
     @OneToMany(mappedBy = "testResponse")
-    private List<ItemResponse> itemResponses;
+    List<QuestionResponse> questionResponses = new ArrayList<QuestionResponse>();
+
 
     public TestResponse()
     {
 
     }
 
-    public TestResponse(int testResponse_id, User user, Test test, int status, boolean submissionstatus, List<ItemResponse> itemResponses) {
+    public TestResponse(int testResponse_id, Test test, User user, List<QuestionResponse> questionResponses) {
         this.testResponse_id = testResponse_id;
-        this.user = user;
         this.test = test;
-        this.status = status;
-        this.submissionstatus = submissionstatus;
-        this.itemResponses = itemResponses;
+        this.user = user;
+        this.questionResponses = questionResponses;
     }
 
     public int getTestResponse_id() {
@@ -44,6 +41,34 @@ public class TestResponse
 
     public void setTestResponse_id(int testResponse_id) {
         this.testResponse_id = testResponse_id;
+    }
+//
+
+//
+//    public Test getTest() {
+//        return test;
+//    }
+//
+//    public void setTest(Test test) {
+//        this.test = test;
+//    }
+
+//
+//    public int getUserId() {
+//        return userId;
+//    }
+//
+//    public void setUserId(int userId) {
+//        this.userId = userId;
+//    }
+
+
+    public Test getTest() {
+        return test;
+    }
+
+    public void setTest(Test test) {
+        this.test = test;
     }
 
     public User getUser() {
@@ -54,35 +79,21 @@ public class TestResponse
         this.user = user;
     }
 
-    public Test getTest() {
-        return test;
+    public List<QuestionResponse> getQuestionResponses() {
+        return questionResponses;
     }
 
-    public void setTest(Test test) {
-        this.test = test;
+    public void setQuestionResponses(List<QuestionResponse> questionResponses) {
+        this.questionResponses = questionResponses;
     }
 
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public boolean isSubmissionstatus() {
-        return submissionstatus;
-    }
-
-    public void setSubmissionstatus(boolean submissionstatus) {
-        this.submissionstatus = submissionstatus;
-    }
-
-    public List<ItemResponse> getItemResponses() {
-        return itemResponses;
-    }
-
-    public void setItemResponses(List<ItemResponse> itemResponses) {
-        this.itemResponses = itemResponses;
+    @Override
+    public String toString() {
+        return "TestResponse{" +
+                "testResponse_id=" + testResponse_id +
+                ", test=" + test +
+                ", user=" + user +
+                ", questionResponses=" + questionResponses +
+                '}';
     }
 }

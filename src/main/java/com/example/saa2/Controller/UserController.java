@@ -21,6 +21,14 @@ public class UserController
         return "Hello";
     }
 
+    @RequestMapping(method = RequestMethod.POST, value = "/register")
+    public String register(@RequestBody User user)
+    {
+        System.out.println(user);
+        userService.registerUser(user);
+        return "User Registered";
+    }
+
     @RequestMapping(method = RequestMethod.POST, value = "/login")
     public String authenticateUser(@RequestBody User user)
     {
@@ -44,16 +52,6 @@ public class UserController
         return "Login Successful";
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/submit")
-    public String submitResponse(@RequestBody TestResponse testResponse)
-    {
-        //This class will store the response of Student and return the submission status.
-    }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/fetchResponse")
-    public List<TestResponse> getResponse(@RequestParam Integer section_id, Integer test_id)
-    {
-        //This class will return the List of student responses for the provided section_id and test_id.
-    }
 
 }
