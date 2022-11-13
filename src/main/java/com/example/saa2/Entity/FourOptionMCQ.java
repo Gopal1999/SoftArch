@@ -104,4 +104,14 @@ public class FourOptionMCQ extends MCQ
     public void setOption4(String option4) {
         Option4 = option4;
     }
+
+    @Override
+    public String toString() {
+        return "FourOptionMCQ{" +
+                "Option1='" + Option1 + '\'' +
+                ", Option2='" + Option2 + '\'' +
+                ", Option3='" + Option3 + '\'' +
+                ", Option4='" + Option4 + '\'' +
+                '}';
+    }
 }

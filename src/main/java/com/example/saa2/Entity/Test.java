@@ -9,7 +9,6 @@ import java.util.List;
 @Entity
 public class Test {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int test_id;
 
     @OneToMany(mappedBy = "test")

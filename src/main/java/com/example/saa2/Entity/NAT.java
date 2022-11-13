@@ -74,4 +74,9 @@ public class NAT extends Question
     {
 
     }
+
+    @Override
+    public String toString() {
+        return "NAT{}";
+    }
 }

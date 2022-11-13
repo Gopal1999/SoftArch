@@ -82,5 +82,15 @@ public class ThreeOptionMCQ extends MCQ
 
     public void setOption3(String option3) {
         Option3 = option3;
+
+    }
+
+    @Override
+    public String toString() {
+        return "ThreeOptionMCQ{" +
+                "Option1='" + Option1 + '\'' +
+                ", Option2='" + Option2 + '\'' +
+                ", Option3='" + Option3 + '\'' +
+                '}';
     }
 }

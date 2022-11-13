@@ -49,5 +49,8 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class MCQ extends Question
 {
+    public MCQ()
+    {
 
+    }
 }

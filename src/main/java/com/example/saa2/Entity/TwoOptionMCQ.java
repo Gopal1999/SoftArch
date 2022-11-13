@@ -51,6 +51,14 @@ public class TwoOptionMCQ extends MCQ
 
     }
 
+    @Override
+    public String toString() {
+        return "TwoOptionMCQ{" +
+                "option1='" + option1 + '\'' +
+                ", option2='" + option2 + '\'' +
+                '}';
+    }
+
     public String getOption1() {
         return option1;
     }
