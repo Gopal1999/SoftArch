@@ -1,6 +1,6 @@
 package com.example.saa2.Entity;
 
-import com.example.saa2.Entity.Interfaces.ItemType;
+//import com.example.saa2.Entity.Interfaces.ItemType;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
